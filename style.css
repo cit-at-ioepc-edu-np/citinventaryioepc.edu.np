@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+:root {
+    --primary: #4f5be7;
+    --secondary: #20b486;
+    --danger: #ef4444;
+    --dark: #111827;
+    --light: #ffffff;
+    --gray-bg: #f3f4f6;
+    --sidebar-bg: #1e293b;
+}
+
+body {
+    background: linear-gradient(to right, #16213e, #0f172a);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Login Components */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    background: white;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.login-card p {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.role-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.role-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #f9fafb;
+    font-weight: bold;
+    color: #4b5563;
+    transition: all 0.2s ease;
+}
+
+.role-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: border 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--primary);
+}
+
+.btn-submit, .btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:hover, .btn-primary:hover {
+    opacity: 0.9;
+}
+
+.designer-credit {
+    text-align: center;
+    margin-top: 29px;
+    font-size: 18px;
+    color: #1a54b9;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #f3f4f6;
+    padding-top: 18px;
+}
+
+/* App System Structure Layout */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: var(--gray-bg);
+}
+
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px 20px;
+}
+
+.sidebar-header h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.sidebar-header p {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.nav-menu {
+    margin-top: 40px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    transition: all 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-item.active {
+    background: var(--primary);
+}
+
+.user-profile {
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.user-info span {
+    font-weight: 600;
+}
+
+.user-info small {
+    color: #94a3b8;
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 8px;
+    background: #df4759;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Content Area */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.view-section {
+    display: none;
+}
+
+.view-section.active {
+    display: block;
+}
+
+.header-title {
+    margin-bottom: 25px;
+    color: var(--dark);
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-bottom: 20px;
+    color: #374151;
+}
+
+/* Tables Layout */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background: #f9fafb;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.btn-delete {
+    padding: 6px 12px;
+    background: var(--danger);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}

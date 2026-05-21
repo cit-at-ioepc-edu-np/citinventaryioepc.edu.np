@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIT Inventory Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginScreen" class="login-container">
+    <div class="login-card">
+        <h2>CIT Inventory</h2>
+        <p>ERC Campus Management System</p>
+        
+        <div class="role-selector">
+            <button type="button" class="role-btn active" data-role="admin" onclick="selectRole('admin')">Admin</button>
+            <button type="button" class="role-btn" data-role="user" onclick="selectRole('user')">Staff</button>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="admin" id="usernameInput" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="adminpassword" id="passwordInput" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">Secure Login</button>
+        </form>
+        <div class="designer-credit">Designed by Mahadev Chaudhary</div>
+    </div>
+</div>
+
+<div id="mainSystem" class="app-wrapper" style="display: none;">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>📦 CIT Store</h2>
+            <p>Inventory Dashboard</p>
+        </div>
+        
+        <div class="nav-menu">
+            <div class="nav-item active" onclick="switchView('view-stock')">
+                <span>📊</span> Stock Balance
+            </div>
+            <div class="nav-item" id="nav-add-item" onclick="switchView('view-add')">
+                <span>📥</span> Add Inventory
+            </div>
+            <div class="nav-item" onclick="switchView('view-issue')">
+                <span>📤</span> Issue Items
+            </div>
+            <div class="nav-item" onclick="switchView('view-history')">
+                <span>📜</span> Activity Logs
+            </div>
+        </div>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <span id="displayUserName">Admin User</span>
+                <small id="displayUserRole">Administrator</small>
+            </div>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <div id="view-stock" class="view-section active">
+            <h2 class="header-title">Current Stock Overview</h2>
+            <div class="card">
+                <div style="overflow-x: auto;">
+                    <table id="stockTable">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Serial/Model</th>
+                                <th>Total Rcvd</th>
+                                <th>Available</th>
+                                <th class="admin-only-cell">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-add" class="view-section">
+            <h2 class="header-title">Warehouse Entry</h2>
+            <div id="adminPanelCard" class="card">
+                <h3>Register New / Existing Items to Store</h3>
+                <form id="storeForm" style="max-width: 500px;" onsubmit="handleAddInventory(event)">
+                    <div class="form-group">
+                        <label>Item Name</label>
+                        <input type="text" id="itemName" placeholder="e.g. Cisco Switch, CAT6 Cable" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Serial Number / Model No.</label>
+                        <input type="text" id="itemSerial" placeholder="e.g. SN-89473" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="itemQty" value="1" min="1" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Save to Database</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="view-issue" class="view-section">
+            <h2 class="header-title">Dispatch Items</h2>
+            <div class="card">
+                <h3>Issue Inventory to Staff/Labs</h3>
+                <form id="issueForm" style="max-width: 500px;" onsubmit="handleIssueInventory(event)">
+                    <div class="form-group">
+                        <label>Select Available Item</label>
+                        <select id="issueItemSelect" required>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Issued To (Name)</label>
+                        <input type="text" id="borrowerName" placeholder="Enter recipient name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination Location</label>
+                        <input type="text" id="location" placeholder="e.g. Computer Lab A" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity to Issue</label>
+                        <input type="number" id="issueQty" value="1" min="1" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="background: var(--secondary);">Confirm Dispatch</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="view-history" class="view-section">
+            <h2 class="header-title">System Transaction Logs</h2>
+            <div class="card">
+                <div style="overflow-x: auto;">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Item</th>
+                                <th>Action</th>
+                                <th>Qty</th>
+                                <th>Details / Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
